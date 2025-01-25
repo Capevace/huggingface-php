@@ -39,6 +39,10 @@ $result = HuggingFace::inference(
 
 ## Changelog
 
+### 1.0.3
+
+- fix: added response data as return value
+
 ### 1.0.2
 
 - fix: added autoload to composer.json 

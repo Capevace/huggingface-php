@@ -5,6 +5,7 @@ namespace Mateffy\HuggingFace\Requests;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 
 //import requests
@@ -47,4 +48,9 @@ class InferenceRequest extends Request implements HasBody
     {
         return $this->data;
     }
+
+	public function createDtoFromResponse(Response $response): mixed
+	{
+		return $response->json();
+	}
 }
