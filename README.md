@@ -60,6 +60,9 @@ $result = $client->run(
 
 ## Changelog
 
+### 1.0.4
+- feat: better API for single/multiple inputs
+
 ### 1.0.3
 
 - fix: added response data as return value

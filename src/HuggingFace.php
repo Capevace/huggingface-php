@@ -24,9 +24,13 @@ class HuggingFace
 	 */
 	public function run(string $model, array $data = [])
 	{
-		return $this->connector()
-			->send(new InferenceRequest($model, $data))
-			->dtoOrFail();
+		$response = $this->connector()->send(new InferenceRequest($model, $data));
+
+        if (!$response->ok()) {
+            throw new RequestException($response, $response->body());
+        }
+
+        return $response->dtoOrFail();
 	}
 
 	/**
