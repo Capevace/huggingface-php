@@ -1,0 +1,15 @@
+{
+  "name": "mateffy/huggingface",
+  "description": "An unofficial Huggingface Inference API client for PHP",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Lukas Mateffy",
+      "email": "github@mateffy.me"
+    }
+  ],
+  "require": {
+    "saloonphp/saloon": "^3.0"
+  }
+}
