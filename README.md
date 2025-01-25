@@ -36,3 +36,9 @@ $result = HuggingFace::inference(
 
 
 ```
+
+## Changelog
+
+### 1.0.1
+
+- fix: added autoload to composer.json 
