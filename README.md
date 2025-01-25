@@ -17,7 +17,7 @@ $token = 'API_TOKEN';
 
 $client = new HuggingFace($token);
 
-$result = $client->infer(
+$result = $client->run(
     model: 'j-hartmann/emotion-english-distilroberta-base',
     data: [
         'inputs' => 'I am happy',
@@ -26,7 +26,7 @@ $result = $client->infer(
 
 // or shorthand:
 
-$result = HuggingFace::run(
+$result = HuggingFace::inference(
     token: $token,
     model: 'j-hartmann/emotion-english-distilroberta-base',
     data: [
