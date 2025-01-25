@@ -33,8 +33,22 @@ class HuggingFace
 	 * @throws FatalRequestException
 	 * @throws RequestException
 	 */
-	public static function inference(string $token, string $model, array $data = [])
+	public static function inference(string $token, string $model, array $data = [], ?array $inputs = null, ?string $input = null): array
 	{
-		return (new static($token))->run($model, $data);
+		$client = new self($token);
+
+		// If we passed a single input, we modify the return value to be the first element of the result
+		if ($input !== null) {
+			$result = $client->run($model, ['inputs' => [$input]]);
+
+			return $result[0];
+		}
+
+		// If we passed multiple inputs, we modify the return value to be the result
+		if ($inputs !== null) {
+			$data = ['inputs' => $inputs];
+		}
+
+		return $client->run($model, $data);
 	}
 }

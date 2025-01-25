@@ -17,24 +17,45 @@ $token = 'API_TOKEN';
 
 $client = new HuggingFace($token);
 
-$result = $client->run(
+$emotions = $client->run(
     model: 'j-hartmann/emotion-english-distilroberta-base',
-    data: [
-        'inputs' => 'I am happy',
-    ]
+    input: 'I am happy',
 );
+/* -> [['label' => 'happy', 'score' => 0.9999], ...] */
 
-// or shorthand:
 
-$result = HuggingFace::inference(
+
+/*
+ * Shorthand version:
+ */
+
+$emotions = HuggingFace::inference(
     token: $token,
     model: 'j-hartmann/emotion-english-distilroberta-base',
-    data: [
-        'inputs' => 'I am happy',
+    /* Passing a single input will make the response also be a single value */
+    input: 'I am happy',
+);
+/* -> [['label' => 'happy', 'score' => 0.9999], ...] */
+
+
+/* 
+ * or with multiple inputs
+ */
+
+$result = $client->run(
+    model: 'j-hartmann/emotion-english-distilroberta-base',
+    /* Multiple inputs will return an array of results */
+    inputs: [
+        'I am happy',
+        'I am sad',
     ]
 );
-
-
+/*
+ * -> [
+ *      [['label' => 'happy', 'score' => 0.9999], ...]],
+ *      [['label' => 'sad', 'score' => 0.9999], ...]],
+ * ]
+ */
 ```
 
 ## Changelog
