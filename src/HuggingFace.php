@@ -22,7 +22,7 @@ class HuggingFace
 	 * @throws FatalRequestException
 	 * @throws RequestException
 	 */
-	public function infer(string $model, array $data = [])
+	public function run(string $model, array $data = [])
 	{
 		return $this->connector()
 			->send(new InferenceRequest($model, $data))
@@ -33,8 +33,8 @@ class HuggingFace
 	 * @throws FatalRequestException
 	 * @throws RequestException
 	 */
-	public static function run(string $token, string $model, array $data = [])
+	public static function inference(string $token, string $model, array $data = [])
 	{
-		return (new static($token))->infer($model, $data);
+		return (new static($token))->run($model, $data);
 	}
 }

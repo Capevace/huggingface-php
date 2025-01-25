@@ -15,6 +15,17 @@ use Mateffy\HuggingFace;
 
 $token = 'API_TOKEN';
 
+$client = new HuggingFace($token);
+
+$result = $client->infer(
+    model: 'j-hartmann/emotion-english-distilroberta-base',
+    data: [
+        'inputs' => 'I am happy',
+    ]
+);
+
+// or shorthand:
+
 $result = HuggingFace::run(
     token: $token,
     model: 'j-hartmann/emotion-english-distilroberta-base',
@@ -22,4 +33,6 @@ $result = HuggingFace::run(
         'inputs' => 'I am happy',
     ]
 );
+
+
 ```
